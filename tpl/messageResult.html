@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+	
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<script src="js/jquery-2.1.4.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="css/buttons.css" rel="stylesheet" media="screen">
+	<script src="js/bootstrap.min.js"></script>
+	<link href="css/test.css" rel="stylesheet" media="screen">
+	<link href="css/list.css" rel="stylesheet" media="screen">
+	</head>
+	<body background="img/bg.jpg" style="background-size:cover;" >
+		{include file="header.html"}
+		<div  style="width:500px;height:380px;position:absolute;left:50%;margin-left:-250px;top:50%;margin-top:-190px;">
+			<table class="table table-hover table-bordered" contenteditable="true">
+				<tr>
+					<th>编号</th>
+					<th>学号</th>
+					<th>留言信息</th>
+					<th>留言时间</th>
+				</tr>
+			
+				{foreach from=$messageArray item=val key=key}
+					<tr >
+						<td>{$val.id}</td>
+						<td>{$val.schoolnum}</td>
+						<td>{$val.detail}</td>
+						<td>{$val.time}</td>
+						
+					</tr>
+			
+				{/foreach}
+		
+		</table>
+		<br>
+		</div>
+	</body>
+</html>

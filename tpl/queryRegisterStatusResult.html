@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+	
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<script src="js/jquery-2.1.4.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="css/buttons.css" rel="stylesheet" media="screen">
+	<script src="js/bootstrap.min.js"></script>
+	<link href="css/test.css" rel="stylesheet" media="screen">
+	<link href="css/list.css" rel="stylesheet" media="screen">
+	</head>
+	<body background="img/bg2.jpg" style="background-size:cover;" >
+		
+		<div class="elegant-aero" style="width:500px;height:380px;position:absolute;left:50%;margin-left:-250px;top:50%;margin-top:-190px;">
+
+			<form action="queryRegisterStatus.php" method="post">
+				<h1><b>查询结果</b></h1>
+				<label>
+					<span>编号:</span>
+					<input type="text"  name="schoolnum" value="{$user.userid}" disabled="disabled" />
+				</label>
+
+				
+				<label>
+					<span>姓名:</span>
+					<input type="text"  name="schoolnum" value="{$user.name}" disabled="disabled" />
+				</label>
+
+
+				<label>
+					<span>班级:</span>
+					<input type="text"  name="schoolnum" value="{$user.class}" disabled="disabled" />
+				</label>
+
+
+				<label>
+					<span>电话:</span>
+					<input type="text"  name="schoolnum" value="{$user.tel}" disabled="disabled" />
+				</label>
+
+				<label>
+					<span>状态:</span>
+					
+						{if $user.status eq '0'}
+							
+							<td><input type="text"  name="schoolnum" value="报名成功,请保持手机通畅,等待我们的通知" disabled="disabled" /></td>
+						{elseif $user.status eq '-1'}
+							<td><input type="text"  name="schoolnum" value="A轮面试中" disabled="disabled" /></td>
+						{elseif $user.status eq 'A'}
+							<td><input type="text"  name="schoolnum" value="等待B轮面试" disabled="disabled"/></td>
+							<td></td>
+						{elseif $user.status eq '-2'}
+						<td><input type="text"  name="schoolnum" value="等待B轮面试" disabled="disabled" /></td>
+							<td>B轮面试中</td>
+   						{elseif $user.status eq 'C'}
+   							<td><input type="text"  name="schoolnum" value="恭喜你,通过面试" disabled="disabled" /></td>
+   							<td></td>
+   						{elseif $user.status eq 'D'}	
+   							<td><input type="text"  name="schoolnum" value="很遗憾，你通过面试,如果对我们工作室特别喜欢，可联系我们" disabled="disabled" /></td>
+   							<td></td>	
+						{elseif $user.status eq 'B'}
+							<td><input type="text"  name="schoolnum" value="等待面试结果" disabled="disabled"/></td>
+							 <td></td>
+						{/if}
+
+				</label>
+
+
+			</form>
+
+			 <a href="index.html" class="button button-raised button-primary button-pill">信息正确，返回主页</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="message.html" class="button button-raised button-primary button-pill">信息错误，进入留言系统</a>
+			
+			
+		</div>
+
+	</body>
+</html>

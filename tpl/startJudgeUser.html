@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<script src="js/jquery-2.1.4.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="css/buttons.css" rel="stylesheet" media="screen">
+	<script src="js/bootstrap.min.js"></script>
+	
+	<style type="text/css">
+		.hero-unit{
+		position: absolute;
+		}
+
+		#counter{
+			float: right;
+			background-color:rgb(220, 18, 18);
+			padding: 15px;
+			border-radius: 5px;
+			margin-right: 0px;
+			margin-top: -620px;
+		}
+		#record{
+			float: right;
+			background-color: #ccc;
+			padding: 15px;
+			border-radius: 5px;
+			margin-right: 550px;
+			margin-top: -590px;
+		}
+
+
+
+	</style>
+	<script language="javascript">
+		window.onload = function(){
+			var inTime = new Date();
+			var inTimeMsec = inTime.getTime();
+			var t = null;
+		    t = setTimeout(time,1000);//开始执行
+		    function time()
+		    {
+		       clearTimeout(t);//清除定时器
+		       dt = new Date();
+		       var dtMsec = dt.getTime();
+		       dt = new Date(dtMsec-inTimeMsec);
+		      // alert(dtMsec-inTimeMsec);
+		       var h=dt.getHours();
+		       var m=dt.getMinutes();
+		       var s=dt.getSeconds();
+		       // alert(h);
+		       //计算出小时数
+				var leave1=(dtMsec-inTimeMsec)%(24*3600*1000)    //计算天数后剩余的毫秒数
+				var hours=Math.floor(leave1/(3600*1000))
+		       	document.getElementById("counter").innerHTML =  "面试时长"+hours+"时"+m+"分"+s+"秒";
+		       	t = setTimeout(time,1000); //设定定时器，循环执行             
+		    } 
+		   
+		}		
+		
+	</script>
+	</head>
+
+	<body>
+ 		{include file="header.html"}
+		 <div class="container">
+			<div class="row">
+				<div class="span12">
+					<ul class="breadcrumb">
+						
+						<li class="active">
+							编号:{$user.userid}<span class="divider">/</span>
+						</li>
+						<li class="active">
+							学号:{$user.schoolnum}<span class="divider">/</span>
+						</li>
+						
+						<li class="active">
+							姓名:{$user.name}<span class="divider">/</span>
+						</li>
+						
+						<li class="active">
+							班级:{$user.class}<span class="divider">/</span>
+						</li>
+						
+
+						
+						<li class="active">
+							报名时间:{$user.regtime}<span class="divider">/</span>
+						</li>
+						
+						
+
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+					<form action="addUserJudgeRecord.php" align="left" method="post">
+						<fieldset>
+
+							 <legend>面试评价</legend> 
+
+							  <label>面试状态</label>
+							 <select name="status">  
+								  <option value ="A">A轮面试 </option>  
+								  <option value ="B">B轮面试</option>  
+							</select>  
+							 <label>基本技能</label>
+							 <input type="hidden" name="schoolnum" value={$schoolnum} ></input>
+							<textarea rows="5" cols="30" name="basic"></textarea><br>
+							 <label>加分技能</label>
+							<textarea rows="5" cols="30" name="advance"></textarea><br>
+
+							 <label>总体评价</label>
+							<textarea rows="5" cols="30" name="general"></textarea><br>
+
+							 <label>等级评价</label>
+							 <select name="grade">  
+								  <option value ="1">A(100-90) 非常好 可以直接通过 </option>  
+								  <option value ="2">B(89-70)  很好  可以直接通过</option>  
+								  <option value ="3">C(69-60)</option>  
+								  <option value="4">D(60以下)  </option>  
+								
+							</select>  
+							<br>
+							<button type="submit" class="btn">提 交 评 价</button>	
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+		 <div id="record">
+		 	<table>
+
+				{foreach from=$recordArray item=val key=key}
+							<tr><td>---------------------------------------</td></tr>
+							<tr><td>姓名:{$val.name}</td></tr>
+							<tr><td>电话{$val.tel}</td></tr>
+							<tr><td>班级:{$val.class}</td></tr>
+							{if $val.status eq 'A' }
+							  <tr><td>状态:A轮面试</td></tr>
+							{else}
+   								<tr><td>状态:B轮面试</td></tr>
+							{/if}							
+							<tr><td>面试官姓名:{$val.jname}</td></tr>
+							<tr><td>基本评价:{$val.basic}</td></tr>
+							<tr><td>加分项:{$val.advance}</td></tr>
+							<tr><td>总体评价:{$val.general}</td></tr>
+							{if $val.grade eq '1'}
+    							 <tr><td>评价分数:A</td></tr>
+							{elseif  $val.grade eq '2'}
+   								<tr><td>评价分数:B</td></tr>
+   							{elseif  $val.grade eq '3'}
+   								<tr><td>评价分数:C</td></tr>
+   							{elseif  $val.grade eq '4'}
+   								<tr><td>评价分数:D</td></tr>
+							{/if}
+							<tr><td>评价时间:{$val.time}</td></tr>
+
+						
+					{/foreach}
+				</table>
+		</div>
+
+		<div id="counter">
+		</div>
+	</body>
+
+</html>

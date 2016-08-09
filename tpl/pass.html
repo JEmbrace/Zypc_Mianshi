@@ -4,19 +4,19 @@
 	
 	<title></title>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-	<script src="./js/jquery-2.1.4.js"></script>
-	<link href="./css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<link href="./css/buttons.css" rel="stylesheet" media="screen">
-	<link href="./css/list.css" rel="stylesheet" media="screen">
-	<script src="./js/bootstrap.min.js"></script>
+	<script src="../js/jquery-2.1.4.js"></script>
+	<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../css/buttons.css" rel="stylesheet" media="screen">
+	<link href="../css/list.css" rel="stylesheet" media="screen">
+	<script src="../js/bootstrap.min.js"></script>
 	</head>
-	<body >
+	<body background="../img/bg5.jpg" style="background-size:cover;" >
 		{include file="header.html"}
-		<center><img src="img/user1.png" style='max-height:160px;max-width:160px;' /></center>
-		<div style="width:500px;height:380px;position:absolute;left:50%;margin-left:-250px;top:50%;margin-top:auto;">
-			<table class="gridtable" >
-					<thead>
-					<tr>
+		<center><h1>通过面试同学列表</h1></center>
+		<div >
+		
+			<table class="table table-hover table-bordered"  >
+				<tr>
 						<th>编号</th>
 						<th>姓名</th>
 						<th>学号</th>
@@ -24,9 +24,9 @@
 						<th>班级</th>
 						<th>面试记录</th>
 					</tr>
-				</thead>
+				
 				{foreach from=$passUser item=val key=key}
-					<tbody>
+					
 						<tr>
 							<td>{$val.userid}</td>
 							<td>{$val.name}</td>
@@ -36,10 +36,8 @@
 							<td><a href="userJudgeRecordResult.php?schoolnum={$val.schoolnum}">点此查看面试记录</a></td>
 							
 						</tr>
-					</tbody>
+				
 				{/foreach}
 			</table>
-		</div>
-
 </body>
 </html>

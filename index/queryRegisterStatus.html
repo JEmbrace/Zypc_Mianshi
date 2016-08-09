@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+	
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<script src="../js/jquery-2.1.4.js"></script>
+	<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../css/buttons.css" rel="stylesheet" media="screen">
+	<script src="../bootstrap.min.js"></script>
+	<link href="../css/test.css" rel="stylesheet" media="screen">
+
+	<script type="text/javascript" src="../css/alert/zepto.min.js"></script>
+	<script type="text/javascript" src="../css/alert/mdialog.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/alert/mdialog.css">
+
+	<script type="text/javascript">
+	window.onload = function(){
+			var submitNode= document.getElementById("sub");
+			submitNode.onclick = function(){
+		
+				var schoolnumNode= document.getElementById("schoolnum").value;
+					
+				//姓名
+				if(schoolnumNode.length == 0){
+					  new TipBox({type:'error',str:'对不起,学号不能为空!',hasBtn:true});  
+					  return false;
+				}
+
+				if(schoolnumNode.length != 8){
+					  new TipBox({type:'error',str:'对不起,学号必须为8位!',hasBtn:true});  
+					  return false;
+				}
+
+				
+				
+			}
+
+		}
+
+	</script>
+	</head>
+	<body background="../img/bg2.jpg" style="background-size:cover;" >
+
+		<div class="elegant-aero" style="width:500px;height:380px;position:absolute;left:50%;margin-left:-250px;top:50%;margin-top:-190px;">
+
+			<form action="queryRegisterStatus.php" method="post">
+				<h1><b>查询</b></h1>
+				<label>
+					<span>SchoolNum:</span>
+					<input id="schoolnum" type="text"  name="schoolnum" placeholder="请输入学号进行查询" />
+				</label>
+
+				
+				<label>
+					<span>&nbsp;</span>
+					<input id="sub" type="submit" class="button" value="开始查询" />
+				</label>
+			</form>
+			
+		</div>
+
+
+
+	</body>
+</html>

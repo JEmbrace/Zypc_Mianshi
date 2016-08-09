@@ -9,30 +9,35 @@
 	<link href="../css/buttons.css" rel="stylesheet" media="screen">
 	<link href="../css/font-awesome.min.css" rel="stylesheet" media="screen">
 	<script src="../js/bootstrap.min.js"></script>
-
+	<style>
+		input{
+			
+			width:350px;
+			height:100;"
+		}
+	</style>
 	</head>
 
 	<body background="../img/bg5.jpg" style="background-size:cover;" >
 		<div style="width:500px;height:380px;position:absolute;left:50%;margin-left:-250px;top:50%;margin-top:-190px;">
-		<center><h3>面试官信息录入</h3></center>
-		
-		<form action="../admin/addJudger.php" method="post">	
-			<table align="center">	
-				<p align="center">
-						<input type="text"  name="name" placeholder="姓名" />
-				</p>
-					
-				<p align="center">
-						<input type="text"  name="tel" placeholder="电话" />
-				</p>
-				<p align="center">
-					<input class="button button-pill button-tiny"  type="submit" value="提  交  信  息" >
-				</p>
-			
-				</table>
-			</form>
-			</div>
-	
-	</body>
 
+		<center><img src="../img/user1.png"  style='max-height:160px;max-width:160px;'/></center>
+		<br>
+			<form action="judgerLogin.php" align="center" method="post">
+			  <div class="input-prepend">
+			    <span class="add-on"><i class="icon-envelope"></i></span>
+			    <input class="span2" type="text" placeholder="username" name="jname">
+			  </div>
+			  <br>
+			  <div class="input-prepend">
+			    <span class="add-on"><i class="icon-key"></i></span>
+			    <input class="span2" type="password" placeholder="Password" name="jpassword">
+			  </div>
+			   <br>
+			<input class="button button-pill button-tiny"  type="submit" value="进入面试系统" >
+			
+			 
+			</form>
+		</div>
+	</body>
 </html>

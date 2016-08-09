@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+	
+	<title>智邮普创工作室</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<script src="../js/jquery-2.1.4.js"></script>
+	<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../css/buttons.css" rel="stylesheet" media="screen">
+	<script src="../js/bootstrap.min.js"></script>
+	
+	<link href="../css/test.css" rel="stylesheet" media="screen">
+
+
+	<script type="text/javascript" src="../css/alert/zepto.min.js"></script>
+	<script type="text/javascript" src="../css/alert/mdialog.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/alert/mdialog.css">
+
+	<script type="text/javascript">
+
+		window.onload = function(){
+			var submitNode= document.getElementById("sub");
+			submitNode.onclick = function(){
+				//拿到节点的值
+				var nameNode= document.getElementById("name").value;
+				var numberNode= document.getElementById("number").value;
+				var passwordNode= document.getElementById("password").value;
+				var telNode= document.getElementById("tel").value;
+				var classNode= document.getElementById("class").value;
+
+				
+				//姓名
+				if(nameNode.length == 0){
+					  new TipBox({type:'error',str:'对不起,姓名不能为空!',hasBtn:true});  
+					  return false;
+				}
+
+
+				//学号
+				if(numberNode.length == 0){
+					  new TipBox({type:'error',str:'对不起,学号不能为空!',hasBtn:true}); 
+					   return false; 
+				}
+
+				if(numberNode.length != 8){
+					  new TipBox({type:'error',str:'对不起,学号只能为8位!',hasBtn:true}); 
+					   return false; 
+				}
+
+				//密码
+				if(passwordNode.length == 0){
+					  new TipBox({type:'error',str:'对不起,密码不能为空!',hasBtn:true}); 
+					  return false; 
+				}
+
+				if(passwordNode.length != 6){
+					  new TipBox({type:'error',str:'对不起,密码只能为6位!',hasBtn:true}); 
+					   return false; 
+				}
+
+
+				//电话
+				if(telNode.length == 0){
+					  new TipBox({type:'error',str:'对不起,电话不能为空!',hasBtn:true}); 
+					  return false; 
+				}
+
+				if(telNode.length != 11){
+					  new TipBox({type:'error',str:'对不起,电话只能为11位!',hasBtn:true}); 
+					   return false; 
+				}
+
+				//班级
+				if(classNode.length == 0){
+					  new TipBox({type:'error',str:'对不起,班级不能为空!',hasBtn:true}); 
+					  return false; 
+				}
+
+
+				
+				
+			}
+
+		}
+
+	</script>
+	</head>
+	<body background="../img/bg2.jpg" style="background-size:cover;" >
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+					<div class="alert">
+						
+						<h4>
+							提示!
+						</h4>1.提交报名信息后,点击查询状态,确保信息已录入报名系统.如果发现信息填写有误,
+						<a href="message.html"><strong>点此进入留言系统</strong></a>,留下正确的信息,以告知我们.</br>
+						</h4>2.学号必须为8位,电话必须为11位,密码必须为6位(身份证后六位).</br>
+						</h4>3.智邮普创2016招募QQ群: 399164436.
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="elegant-aero" style="width:500px;height:380px;position:absolute;left:50%;margin-left:-250px;top:50%;margin-top:-190px;">
+
+			<form action="userRegister.php" method="post" >
+				<h1><b>智邮普创工作室纳新报名表</b></h1>
+				<label>
+					<span>name:</span>
+					<input id ="name" type="text"  name="name" placeholder="姓名" />
+				</label>
+
+				<label>
+					<span>SchoolNum:</span>
+					<input id="number" type="text"  name="number" placeholder="学号" />
+				</label>
+
+				<label>
+					<span>Password:</span>
+					<input id="password" type="password" name="password" placeholder="密码(身份证后六位)"  />
+				</label>
+
+				<label>
+					<span>Tel:</span>
+					<input id="tel" type="text"  name="tel" placeholder="电话" />
+				</label>
+			
+				<label>
+					<span>Class:</span>
+					<input id="class" type="text"  name="class" placeholder="专业班级" />
+
+				</label>
+
+				<label>
+					<span>&nbsp;</span>
+					<input id="sub" type="submit"  class="button" value="Send" />
+				</label>
+			</form>
+			
+		</div>
+	</body>
+</html>

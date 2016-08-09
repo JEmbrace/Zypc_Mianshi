@@ -9,11 +9,10 @@
 	<link href="../css/buttons.css" rel="stylesheet" media="screen">
 	<script src="../js/bootstrap.min.js"></script>
 	</head>
-	<body >
+	<body background="../img/bg5.jpg" style="background-size:cover;">
 		{include file="header.html"}
-		<center><img src="img/user1.png" style='max-height:160px;max-width:160px;' /></center>
-		<table class="table table-hover table-bordered" contenteditable="true">
-				<thead>
+		<center><h1>面试官评价记录</h1></center>
+		<table class="table table-hover table-bordered">
 				<tr>
 					<th>面试官姓名</th>
 					<th>面试者姓名</th>
@@ -24,10 +23,10 @@
 					<th>状态</th>
 					<th>评价时间</th>
 				</tr>
-			</thead>
+			
 			{foreach from=$recordsArray item=val key=key}
-				<tbody>
-					<tr class="info">
+				
+					<tr >
 						<td>{$val.jname}</td>
 						<td>{$val.name}</td>
 						<td>{$val.basic}</td>
@@ -50,7 +49,7 @@
 						{/if}	
 						<td>{$val.time}</td>
 					</tr>
-				</tbody>
+				
 			{/foreach}
 		</table>
 		

@@ -4,18 +4,17 @@
 	
 	<title></title>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-	<script src="./js/jquery-2.1.4.js"></script>
-	<link href="./css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<link href="./css/list.css" rel="stylesheet" media="screen">
-	<link href="./css/buttons.css" rel="stylesheet" media="screen">
-	<script src="./js/bootstrap.min.js"></script>
+	<script src="../js/jquery-2.1.4.js"></script>
+	<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../css/list.css" rel="stylesheet" media="screen">
+	<link href="../css/buttons.css" rel="stylesheet" media="screen">
+	<script src="../js/bootstrap.min.js"></script>
 	</head>
-	<body background="img/bg.jpg" style="background-size:cover;" >
+	<body background="../img/bg5.jpg" style="background-size:cover;" >
 		{include file="header.html"}
-		<center><img src="img/user1.png" style='max-height:160px;max-width:160px;' /></center>
-		<div style="width:500px;height:380px;position:absolute;left:50%;margin-left:-250px;top:50%;margin-top:auto;">
-			<table class="gridtable" >
-		
+		<center><h1>已面记录</h1></center>
+		<div >
+			<table class="table table-hover table-bordered" >
 			<tr>
 					<th>已面试者编号</th>
 					<th>已面试者姓名</th>
@@ -34,7 +33,7 @@
 						<td>{$val.schoolnum}</td>
 						<td>{$val.tel}</td>
 						<td>{$val.class}</td>
-						<td><a href="./userJudgeRecordResult.php?schoolnum={$val.schoolnum}">点击查看详情</a></td>
+						<td><a href="userJudgeRecordResult.php?schoolnum={$val.schoolnum}">点击查看详情</a></td>
 
 					</tr>
 				

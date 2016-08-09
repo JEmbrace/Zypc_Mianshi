@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+	
+	<title>智邮普创工作室</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<script src="../js/jquery-2.1.4.js"></script>
+	<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../css/buttons.css" rel="stylesheet" media="screen">
+	<script src="../js/bootstrap.min.js"></script>
+	<link href="../css/test.css" rel="stylesheet" media="screen">
+
+	<script type="text/javascript" src="../css/alert/zepto.min.js"></script>
+	<script type="text/javascript" src="../css/alert/mdialog.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/alert/mdialog.css">
+
+	<script type="text/javascript">
+
+		window.onload = function(){
+			var submitNode= document.getElementById("sub");
+			submitNode.onclick = function(){
+				//拿到节点的值
+				var schoolnumNode= document.getElementById("schoolnum").value;
+				var emailNode= document.getElementById("email").value;	
+				var messageNode= document.getElementById("message").value;	
+
+				//学号
+				if(schoolnumNode.length == 0){
+					  new TipBox({type:'error',str:'对不起,学号不能为空!',hasBtn:true});  
+					  return false;
+				}
+
+				if(schoolnumNode.length != 8){
+					new TipBox({type:'error',str:'对不起,学号必须为8位!',hasBtn:true});  
+					  return false;
+				}
+
+				//邮箱
+				if(emailNode.length == 0){
+					  new TipBox({type:'error',str:'对不起,邮箱不能为空!',hasBtn:true});  
+					  return false;
+				}
+
+				var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+	            if(!myreg.test(emailNode))
+	            {
+	                new TipBox({type:'error',str:'对不起,请输入正确的邮箱!',hasBtn:true});  
+	                return false;
+	           	}
+
+	           	//留言
+	           	if(messageNode.length == 0){
+					  new TipBox({type:'error',str:'对不起,请输入留言信息!',hasBtn:true});  
+					  return false;
+				}
+
+	            
+				
+				
+			}
+
+		}
+
+	</script>
+	</head>
+	<body background="../img/bg2.jpg" style="background-size:cover;height:100%;width:100%;">
+		<div class="elegant-aero" style="width:500px;height:380px;position:absolute;left:50%;margin-left:-250px;top:50%;margin-top:-190px;">
+
+			<form action="addMessage.php" method="post" >
+				<h1><b>留言板</b></h1>
+			
+			<label>
+			<span>Schoolnum:</span>
+			<input id="schoolnum" type="text"  name="schoolnum" placeholder="学号" />
+			</label>
+			<label>
+
+			<label>
+			<span>Email:</span>
+			<input id="email" type="text"  name="email" placeholder="邮箱" />
+			</label>
+			<label>
+
+			<label>
+				<span>Message:</span>
+				<textarea id="message" name="datail" placeholder="填写那项有误，然后留下正确的信息"></textarea>
+			</label>
+
+
+			<label>
+			<span>&nbsp;</span>
+			<input id="sub" type="submit" class="button" value="提交" />
+			</label>
+			</form>
+			
+		</div>
+	</body>
+</html>

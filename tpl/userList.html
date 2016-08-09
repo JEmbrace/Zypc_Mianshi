@@ -9,10 +9,10 @@
 	<link href="../css/buttons.css" rel="stylesheet" media="screen">
 	<script src="../js/bootstrap.min.js"></script>
 	</head>
-	<body >
+	<body background="../img/bg5.jpg" style="background-size:cover;">
 		{include file="header.html"}
-		
-		<table class="table table-hover table-bordered" contenteditable="true">
+		<center><h1>报名列表</h1></center>
+		<table class="table table-hover table-bordered" >
 				<thead>
 				<tr>
 					<th>编号</th>
@@ -27,13 +27,27 @@
 			</thead>
 			{foreach from=$userArray item=val key=key}
 				<tbody>
-					<tr class="info">
+					<tr >
 						<td>{$val.userid}</td>
 						<td>{$val.name}</td>
 						<td>{$val.schoolnum}</td>
 						<td>{$val.tel}</td>
 						<td>{$val.class}</td>
-						<td>{$val.status}</td>
+						{if $val.status eq 'A' }
+							 <td>A轮面试结束,等待B轮面试</td>
+						{elseif $val.status eq 'B'}
+   							<td>B轮面试结束,等待面试结果</td>
+   						{elseif $val.status eq '0'}
+   							<td>报名成功，等待面试</td>
+   						{elseif $val.status eq '-1'}
+   							<td>A轮面试中</td>
+   						{elseif $val.status eq '-2'}
+   							<td>B轮面试中</td>
+   						{elseif $val.status eq 'C'}
+   							<td>通过面试</td>
+   						{elseif $val.status eq 'D'}
+   							<td>未通过面试</td>
+						{/if}	
 						<td>{$val.regtime}</td>
 					</tr>
 				</tbody>

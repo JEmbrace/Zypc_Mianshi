@@ -3,10 +3,10 @@
 	<head>
 	<title></title>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-	<script src="js/jquery-2.1.4.js"></script>
-	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<link href="css/buttons.css" rel="stylesheet" media="screen">
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../js/jquery-2.1.4.js"></script>
+	<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../css/buttons.css" rel="stylesheet" media="screen">
+	<script src="../js/bootstrap.min.js"></script>
 	
 	<style type="text/css">
 		.hero-unit{
@@ -15,18 +15,17 @@
 
 		#counter{
 			float: right;
-			background-color:rgb(220, 18, 18);
+			background-color:rgb(240, 207, 213);
 			padding: 15px;
 			border-radius: 5px;
-			margin-right: 0px;
-			margin-top: -620px;
+			margin-right: 50px;
+			margin-top: -590px;
 		}
 		#record{
 			float: right;
-			background-color: #ccc;
 			padding: 15px;
 			border-radius: 5px;
-			margin-right: 550px;
+			margin-right: 350px;
 			margin-top: -590px;
 		}
 
@@ -108,8 +107,11 @@
 
 							  <label>面试状态</label>
 							 <select name="status">  
+							 	{if $user.status eq "0" || $user.status eq "-1"}
 								  <option value ="A">A轮面试 </option>  
+								{elseif $user.status eq "A" || $user.status eq "-2"}
 								  <option value ="B">B轮面试</option>  
+								{/if}
 							</select>  
 							 <label>基本技能</label>
 							 <input type="hidden" name="schoolnum" value={$schoolnum} ></input>
@@ -135,39 +137,47 @@
 				</div>
 			</div>
 		</div>
+		{if $rRRows eq "0"}
 		 <div id="record">
+		 	<table>
+		 		<b>暂无评价记录</b>
+			</table>
+		</div>
+		{else}
+		 <div id="record" style="width:300px;height:400px;">
 		 	<table>
 
 				{foreach from=$recordArray item=val key=key}
-							<tr><td>---------------------------------------</td></tr>
-							<tr><td>姓名:{$val.name}</td></tr>
-							<tr><td>电话{$val.tel}</td></tr>
-							<tr><td>班级:{$val.class}</td></tr>
+							<tr><td><b>评价记录</b></td></tr>
+							<tr><td>-----------------------------------------------------------</td></tr>
+							<tr><td><b>姓名:</b>{$val.name}</td></tr>
+							<tr><td><b>电话:</b>{$val.tel}</td></tr>
+							<tr><td><b>班级:</b>{$val.class}</td></tr>
 							{if $val.status eq 'A' }
-							  <tr><td>状态:A轮面试</td></tr>
+							  <tr><td><b>状态:</b>A轮面试</td></tr>
 							{else}
-   								<tr><td>状态:B轮面试</td></tr>
+   								<tr><td><b>状态:</b>B轮面试</td></tr>
 							{/if}							
-							<tr><td>面试官姓名:{$val.jname}</td></tr>
-							<tr><td>基本评价:{$val.basic}</td></tr>
-							<tr><td>加分项:{$val.advance}</td></tr>
-							<tr><td>总体评价:{$val.general}</td></tr>
+							<tr><td><b>面试官姓名:</b>{$val.jname}</td></tr>
+							<tr><td><b>基本评价:</b>{$val.basic}</td></tr>
+							<tr><td><b>加分项:</b>{$val.advance}</td></tr>
+							<tr><td><b>总体评价:</b>{$val.general}</td></tr>
 							{if $val.grade eq '1'}
-    							 <tr><td>评价分数:A</td></tr>
+    							 <tr><td><b>评价分数:<b>A</td></tr>
 							{elseif  $val.grade eq '2'}
-   								<tr><td>评价分数:B</td></tr>
+   								<tr><td><b>评价分数:<b>B</td></tr>
    							{elseif  $val.grade eq '3'}
-   								<tr><td>评价分数:C</td></tr>
+   								<tr><td><b>评价分数:<b>C</td></tr>
    							{elseif  $val.grade eq '4'}
-   								<tr><td>评价分数:D</td></tr>
+   								<tr><td><b>评价分数:<b>D</td></tr>
 							{/if}
-							<tr><td>评价时间:{$val.time}</td></tr>
+							<tr><td><b>评价时间:<b>{$val.time}</td></tr>
 
 						
 					{/foreach}
 				</table>
 		</div>
-
+		{/if}
 		<div id="counter">
 		</div>
 	</body>

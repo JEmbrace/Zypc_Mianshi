@@ -7,19 +7,18 @@
 	<script src="../js/jquery-2.1.4.js"></script>
 	<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
 	<link href="../css/buttons.css" rel="stylesheet" media="screen">
+	<link href="../css/list.css" rel="stylesheet" media="screen">
 	<script src="../js/bootstrap.min.js"></script>
 	</head>
-	<body >
+	<body background="../img/bg5.jpg" style="background-size:cover;">
 		{include file="header.html"}
-		<center><img src="img/user1.png" style='max-height:160px;max-width:160px;' /></center>
+		<center><h1>面试者面试评价记录</h1></center>
 		<table class="table table-hover table-bordered" contenteditable="true">
-				<thead>
 				<tr>
 					<th>面试者姓名</th>
 					<th>面试者学号</th>
 					<th>面试者电话</th>
 					<th>面试者班级</th>
-					<th>面试者状态</th>
 					<th>面试官姓名</th>
 					<th>基本技能</th>
 					<th>加分技能</th>
@@ -28,15 +27,14 @@
 					<th>状态</th>
 					<th>评价时间</th>
 				</tr>
-			</thead>
+		
 			{foreach from=$recordsArray item=val key=key}
-				<tbody>
-					<tr class="info">
+				
+					<tr >
 						<td>{$val.name}</td>
 						<td>{$schoolnum}</td>
 						<td>{$val.tel}</td>
 						<td>{$val.class}</td>
-						<td>{$val.status}</td>
 						<td>{$val.jname}</td>
 						<td>{$val.basic}</td>
 						<td>{$val.advance}</td>
@@ -62,16 +60,26 @@
 						{/if}	
 						<td>{$val.time}</td>
 					</tr>
-				</tbody>
+			
 			{/foreach}
 		</table>
+		<div>
+		
 
 		<form action="finallyJudge.php" method="get" >
 
 			<table align="center">
-				<tr><td><input type="hidden" name="schoolnum" value='{$schoolnum}'></td></tr>
-				<tr><td><input type="submit" name="submit1" value="通过"></td></tr>
-				<tr><td><input type="submit" name="submit0" value="不通过"></td></tr>
+				{if $user.status eq "C"}
+					<tr><td><p>	<input type="submit" value="该同学已经通过面试" name="submit2" class="btn" /></p></td>
+				{else if $user.status eq "D"}
+					<tr><td><p>	<input type="submit" value="该同学未通过面试" name="submit3" class="btn" /></p></td>
+				{else}
+				<tr><td><p><input type="hidden" name="schoolnum" value='{$schoolnum}'><p></td></tr>
+
+				<tr><td><p>	<input type="submit" value="通过" name="submit0" class="btn" /></p></td></tr>
+				
+				<tr><td><p>	<input type="submit" value="不通过" name="submit1"  class="btn" /></p></td></tr>
+				{/if}
 			<table>
 
 		</from>
